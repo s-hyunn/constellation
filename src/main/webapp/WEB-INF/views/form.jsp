@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -13,15 +13,17 @@
     ${empty constellation.id ? '➕ 새 별자리 등록' : '✏️ 별자리 수정'}
   </h1>
 
-  <!-- action URL은 컨트롤러에서 모델로 넘겨주면 더 깔끔 -->
-  <form action="${actionUrl}" method="post">
+  <form action="${empty constellation.id ? '/create' : '/edit'}" method="post">
     <div class="mb-3">
       <label class="form-label">ID</label>
-      <input type="number" name="id" class="form-control" value="${constellation.id}" ${empty constellation.id ? '' : 'readonly'}>
+      <input type="number" name="id" class="form-control"
+             value="${empty constellation.id ? '' : constellation.id}"
+             ${empty constellation.id ? '' : 'readonly'}>
     </div>
     <div class="mb-3">
       <label class="form-label">이름</label>
-      <input type="text" name="name" class="form-control" value="${constellation.name}" required>
+      <input type="text" name="name" class="form-control"
+             value="${constellation.name}" required>
     </div>
     <div class="mb-3">
       <label class="form-label">설명</label>
@@ -29,11 +31,10 @@
     </div>
 
     <div class="d-flex justify-content-between">
-      <a href="${pageContext.request.contextPath}/constellation/list" class="btn btn-outline-secondary">목록</a>
+      <a href="/list" class="btn btn-outline-secondary">목록</a>
       <button class="btn btn-primary">${empty constellation.id ? '등록' : '저장'}</button>
     </div>
   </form>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

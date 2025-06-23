@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.5.3'
 	id 'io.spring.dependency-management' version '1.1.7'
+	id 'war'
 }
 
 group = 'com.example'
@@ -24,18 +25,40 @@ repositories {
 }
 
 dependencies {
-   implementation 'javax.servlet:jstl:1.2'
-    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'    
-    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
-   implementation 'org.springframework.boot:spring-boot-starter-validation'
-   implementation 'org.springframework.boot:spring-boot-starter-web'
-   compileOnly 'org.projectlombok:lombok'
-   developmentOnly 'org.springframework.boot:spring-boot-devtools'
-   runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
-   annotationProcessor 'org.projectlombok:lombok'
-   testImplementation 'org.springframework.boot:spring-boot-starter-test'
-   testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	// Spring Boot Starter Web (JSP 포함)
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// JSP 컴파일러
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+
+	implementation 'jakarta.servlet.jsp:jakarta.servlet.jsp-api:3.0.0'
+	implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.0'
+	implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1'
+
+	// JSP에서 Expression Language 작동을 위한 EL 구현체
+	implementation 'org.glassfish.web:jakarta.el:4.0.2'
+
+	// MyBatis
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
+
+	// Bean Validation (JSR-380)
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	// Oracle JDBC
+	runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
+
+	// Lombok
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// DevTools (Hot reload)
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	// Test
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
+
 
 tasks.named('test') {
 	useJUnitPlatform()

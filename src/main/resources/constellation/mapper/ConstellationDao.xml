@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.mybatis.example.dao.IConstellationDAO">
+<mapper namespace="com.example.constellation.dao.IConstellationDAO">
   <select id="selectAll" resultType="com.example.constellation.dto.ConstellationDto">
     select * from constellation
   </select>
@@ -10,4 +10,19 @@
   <select id="selectById" resultType="com.example.constellation.dto.ConstellationDto">
     select * from constellation WHERE id = #{id}
   </select>
+  
+  <update id="update" parameterType="com.example.constellation.dto.ConstellationDto">
+  UPDATE constellation
+  SET name = #{name},
+  description = #{description}
+  WHERE id = #{id}
+  </update>
+  
+  <insert id="insert" parameterType="com.example.constellation.dto.ConstellationDto">
+    INSERT INTO constellation (id, name, description)
+    VALUES (#{id}, #{name}, #{description})
+  </insert>
+  <delete id="delete" parameterType="int">
+  	DELETE FROM constellation WHERE id = #{id}
+  </delete>
 </mapper>

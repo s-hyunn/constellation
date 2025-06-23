@@ -12,4 +12,7 @@ public interface IConstellationDAO {
 	
 	List<ConstellationDto> selectAll();
 	ConstellationDto selectById(@Param("id")int id);
+	void update(ConstellationDto dto);
+	void insert(ConstellationDto dto);
+	void delete(int id);
 }

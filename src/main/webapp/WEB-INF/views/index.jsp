@@ -13,9 +13,9 @@
 
   <div class="card shadow-sm mx-auto" style="max-width:480px">
     <div class="card-body">
-      <form action="${pageContext.request.contextPath}/constellation/result" method="get">
+      <form action="/result" method="post">
         <label for="month" class="form-label fw-semibold">태어난 월을 선택하세요</label>
-        <select id="month" name="month" class="form-select mb-3" required>
+        <select id="month" name="id" class="form-select mb-3" required>
           <option value="" selected hidden>-- 월 선택 --</option>
           <c:forEach begin="1" end="12" var="m">
             <option value="${m}">${m}월</option>
@@ -27,7 +27,7 @@
   </div>
 
   <div class="text-center mt-4">
-    <a href="${pageContext.request.contextPath}/constellation/list" class="link-secondary">⭐ 별자리 목록 (CRUD) 가기</a>
+    <a href="/list" class="link-secondary">⭐ 별자리 목록 (CRUD) 가기</a>
   </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

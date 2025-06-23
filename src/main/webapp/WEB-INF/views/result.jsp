@@ -12,11 +12,11 @@
   <h1 class="text-center fw-bold mb-4">🌟 나의 별자리</h1>
 
   <c:choose>
-    <c:when test="${not empty constellation}">
+    <c:when test="${not empty star}">
       <div class="card shadow-sm mx-auto" style="max-width:560px">
         <div class="card-body">
-          <h2 class="h4 fw-bold mb-2 text-primary">${constellation.name}</h2>
-          <p class="mb-0">${constellation.description}</p>
+          <h2 class="h4 fw-bold mb-2 text-primary">${star.name}</h2>
+          <p class="mb-0">${star.description}</p>
         </div>
       </div>
     </c:when>
@@ -26,8 +26,8 @@
   </c:choose>
 
   <div class="text-center mt-4">
-    <a href="${pageContext.request.contextPath}/constellation/index" class="btn btn-outline-secondary me-2">다시 선택</a>
-    <a href="${pageContext.request.contextPath}/constellation/list" class="btn btn-outline-primary">별자리 목록</a>
+    <a href="/" class="btn btn-outline-secondary me-2">다시 선택</a>
+    <a href="/list" class="btn btn-outline-primary">별자리 목록</a>
   </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
